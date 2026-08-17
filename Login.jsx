@@ -20,7 +20,6 @@ function Login() {
       localStorage.setItem("token", response.data.token);
 
       alert("Login Successful!");
-
       navigate("/dashboard");
     } catch (error) {
       alert(error.response?.data?.message || "Login Failed");
@@ -33,26 +32,30 @@ function Login() {
 
       <form onSubmit={handleLogin}>
         <div className="mb-3">
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <input
+            id="email"
             type="email"
             className="form-control"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
 
         <div className="mb-3">
-          <label>Password</label>
+          <label htmlFor="password">Password</label>
           <input
+            id="password"
             type="password"
             className="form-control"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
 
-        <button className="btn btn-success w-100">
+        <button type="submit" className="btn btn-success w-100">
           Login
         </button>
       </form>
